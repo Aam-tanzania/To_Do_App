@@ -1,17 +1,18 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity, TextInput, FlatList } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { useState } from "react";
+import React, { useState, useContext } from 'react';
+import { View, FlatList, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { TaskContext } from '../context/TaskContext';
+import { FontAwesome } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
-export default function App() {
-  const [task, setTask] = useState("");
+const HomeScreen = ({ navigation }) => {
+  const [task, setTask] = useState('');
   const [tasks, setTasks] = useState([]);
-
+  
   // Function to add a task
   const addTask = () => {
     if (task.trim().length === 0) return;
     setTasks([...tasks, { id: Date.now(), text: task, completed: false }]);
-    setTask("");
+    setTask('');
   };
 
   // Function to toggle task completion
@@ -88,106 +89,106 @@ export default function App() {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   activities: {
     marginTop: 10,
-    width: "100%",
+    width: '100%',
     paddingHorizontal: 20,
   },
   container: {
     flex: 1,
-    backgroundColor: "#1E1E2C",
-    alignItems: "center",
+    backgroundColor: '#1E1E2C',
+    alignItems: 'center',
     paddingTop: 60,
   },
   title: {
     fontSize: 28,
-    fontWeight: "bold",
-    color: "#F8F8F8",
+    fontWeight: 'bold',
+    color: '#F8F8F8',
     marginBottom: 20,
   },
   cardContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "90%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '90%',
     marginBottom: 20,
   },
   card: {
     height: 100,
     width: 110,
     borderRadius: 15,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     elevation: 5,
   },
   card1: {
-    backgroundColor: "#FF4500",
+    backgroundColor: '#FF4500',
   },
   card2: {
-    backgroundColor: "#4B0082",
+    backgroundColor: '#4B0082',
   },
   card3: {
-    backgroundColor: "#008080",
+    backgroundColor: '#008080',
   },
   cardText: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     fontSize: 14,
-    fontWeight: "600",
+    fontWeight: '600',
     marginTop: 5,
   },
   activitySection: {
-    width: "90%",
-    alignItems: "center",
+    width: '90%',
+    alignItems: 'center',
   },
   sectionTitle: {
     fontSize: 20,
-    fontWeight: "bold",
-    color: "#F8F8F8",
+    fontWeight: 'bold',
+    color: '#F8F8F8',
     marginBottom: 10,
   },
   largeCard: {
-    backgroundColor: "#20B2AA",
+    backgroundColor: '#20B2AA',
     height: 75,
-    width: "100%",
+    width: '100%',
     borderRadius: 15,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     elevation: 5,
   },
   taskItem: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    backgroundColor: "#fff",
-    width: "100%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    width: '100%',
     padding: 15,
     borderRadius: 10,
     marginBottom: 10,
-    alignItems: "center",
+    alignItems: 'center',
     elevation: 3,
   },
   taskText: {
     fontSize: 18,
-    color: "#000",
+    color: '#000',
   },
   taskCompleted: {
-    textDecorationLine: "line-through",
-    color: "#888",
+    textDecorationLine: 'line-through',
+    color: '#888',
   },
   inputContainer: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 20,
-    flexDirection: "row",
-    alignItems: "center",
-    width: "90%",
-    justifyContent: "space-between",
-    backgroundColor: "#fff",
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '90%',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
     borderRadius: 30,
     paddingHorizontal: 15,
     paddingVertical: 8,
     elevation: 5,
-    shadowColor: "#000",
+    shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 4,
@@ -195,17 +196,18 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: 16,
-    color: "#000",
+    color: '#000',
   },
   fab: {
-    backgroundColor: "#FF4500",
+    backgroundColor: '#FF4500',
     width: 50,
     height: 50,
     borderRadius: 25,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginLeft: 10,
     elevation: 5,
   },
 });
 
+export default HomeScreen;
